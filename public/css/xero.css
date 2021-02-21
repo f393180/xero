@@ -1,0 +1,9 @@
+body{
+    padding-top: 50px;
+}
+
+.page-title{
+    font-variant: small-caps;
+    text-transform: capitalize;
+    text-decoration: underline;
+}

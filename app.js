@@ -3,6 +3,8 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const opdBillsRoutes = require('./src/routes/opd_bills_routes');
+const usersRoutes = require('./src/routes/users_routes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,10 +16,18 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules', 'jquery', 'di
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+app.use('/opd-bills', opdBillsRoutes);
+app.use('/users', usersRoutes);
+
 app.get('/', (req, res) => {
   res.render('index', {
-    list: ['a', 'b'],
-    title: 'XERO',
+    page_name: 'Home',
+  });
+});
+
+app.get('/change-password', (req, res) => {
+  res.render('users/change_password', {
+    page_name: 'Change Password',
   });
 });
 
