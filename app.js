@@ -3,8 +3,8 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
-const opdBillsRoutes = require('./src/routes/opd_bills_routes');
-const usersRoutes = require('./src/routes/users_routes');
+const opdBillsRoutes = require('./src/routes/opd_bills');
+const usersRoutes = require('./src/routes/users');
 const { port } = require('./src/services/config');
 
 const app = express();

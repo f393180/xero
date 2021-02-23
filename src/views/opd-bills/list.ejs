@@ -14,7 +14,99 @@
             <a class="btn btn-outline-success btn-sm float-right" href="/opd-bills/create" role="button">Create Opd Bill</a>
         </div>
       </div>
+      <form novalidate>
+        <div class='form-row mt-3'>
+          <div class="col-sm-2">
+            <label class="form-label" for="start-date">Start Date</label>
+            <input type="date" class="form-control form-control-sm" id="start-date" value="" required>
+          </div>
+          <div class="col-sm-2">
+            <label class="form-label" for="stop-date">Stop Date</label>
+            <input type="date" class="form-control form-control-sm" id="stop-date" value="" required>
+          </div>
+          <div class="col-sm-2">
+            <label class="form-label" for="stop-date">Status</label>
+            <select class="form-control form-control-sm">
+              <option>All</option>
+              <option>Draft</option>
+              <option>Complete</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <div class='row mt-3'>
+        <div class="col">
+          <table class="table table-sm table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">Bill Date</th>
+                <th scope="col">Patient's Name</th>
+                <th scope="col">Area</th>
+                <th scope="col">Company</th>
+                <th scope="col" class="text-center">Total Charges</th>
+                <th scope="col" class="text-center">Bill Status</th>
+                <th scope="col" class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i < list.length; i++){ %>
+              <tr class="clickable-row">
+                <td class="text-center"><%= list[i].bill_date %></td>
+                <td><%= list[i].patient_name %></td>
+                <td><%= list[i].area %></td>
+                <td><%= list[i].company_name %></td>
+                <td class="text-center">
+                  <a
+                    href='#'
+                    role="button"
+                    data-toggle="popover"
+                    data-trigger="focus"
+                    data-content="
+                      Consulting Charges: <%= list[i].consulting_charge%><br />
+                      Medication Charge: <%= list[i].medication_charge %><br />
+                      Dressing Charge: <%= list[i].dressing_charge %><br />
+                      Other Charge: <%= list[i].other_charge %><br />
+                    ">
+                    <%= (list[i].total_charge)  %>
+                  </a>
+                </td>
+                <td class="text-center">
+                  <span class="badge badge-success">
+                    <%= list[i].bill_status %>
+                  </span>
+                </td>
+                <td class="text-center">
+                  <a href="/opd-bills/view/<%= list[i].opd_bill_id %>" class="text-info">View</a>&nbsp;
+                  <a href="/opd-bills/edit/<%= list[i].opd_bill_id %>" class="text-warning">Edit</a>&nbsp;
+                  <a href="/opd-bills/print/<%= list[i].opd_bill_id %>" class="text-info">Print</a>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination pagination-sm justify-content-end">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">First</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1<span class="sr-only">(current)</span></a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          <li class="page-item"><a class="page-link" href="#">Last</a></li>
+        </ul>
+      </nav>
     </div>
     <%- include('../common/scripts'); %>
+    <script>
+    $(document).ready(function(){
+      $('[data-toggle="popover"]').popover({ trigger: 'focus', html: true});
+    });
+    </script>
   </body>
 </html>
