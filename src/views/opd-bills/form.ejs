@@ -1,0 +1,90 @@
+<form class="data-form">
+  <div class="form-row">
+    <div class="form-group col-sm-3">
+      <label for="bill-date" class="form-label">Date</label>
+      <input type="text" class="form-control form-control-sm" id="bill-date" name="bill-date"
+        value="<%= new Date(opdBill.bill_date.toISOString()).toLocaleDateString('en-IN',{year: 'numeric', month: 'short', day: '2-digit'})  %>"
+        <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="bill-status" class="form-label">Status</label>
+      <input type="text" class="form-control form-control-sm" id="bill-status" name="bill-status"
+        value="<%=opdBill.bill_status  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="opd-bill-id" class="form-label">Id</label>
+      <input type="text" class="form-control form-control-sm" id="opd-bill-id" name="opd-bill-id"
+        value="<%=opdBill.opd_bill_id  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-3">
+      <label for="consulting-charge" class="form-label">Consulting Charge</label>
+      <input type="number" class="form-control form-control-sm" id="consulting-charge" name="consulting-charge"
+        value="<%=opdBill.consulting_charge  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="medication-charge" class="form-label">Medication Charge</label>
+      <input type="number" class="form-control form-control-sm" id="medication-charge" name="medication-charge"
+        value="<%=opdBill.medication_charge  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="dressing-charge" class="form-label">Dressing Charge</label>
+      <input type="number" class="form-control form-control-sm" id="dressing-charge" name="dressing-charge"
+        value="<%=opdBill.dressing_charge  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="other-charge" class="form-label">Other Charge</label>
+      <input type="number" class="form-control form-control-sm" id="other-charge" name="other-charge"
+        value="<%=opdBill.other_charge  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-3">
+      <label for="patient-first-name" class="form-label">Patient's First Name</label>
+      <input type="text" class="form-control form-control-sm" id="patient-first-name" name="patient-first-name"
+        value="<%=opdBill.patient_first_name  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <label for="patient-last-name" class="form-label">Patient's Last Name</label>
+      <input type="text" class="form-control form-control-sm" id="patient-last-name" name="patient-last-name"
+        value="<%=opdBill.patient_last_name  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm">
+      <label for="company-name" class="form-label">Company Name</label>
+      <input type="text" class="form-control form-control-sm" id="company-name" name="company-name"
+        value="<%=opdBill.company_name  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm-8">
+      <label for="street-address" class="form-label">Street Address</label>
+      <input type="text" class="form-control form-control-sm" id="street-address" name="street-address"
+        value="<%=opdBill.street_address  %>" <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+    <div class="form-group col-sm-4">
+      <label for="area" class="form-label">Area</label>
+      <input type="text" class="form-control form-control-sm" id="area" name="area" value="<%=opdBill.area  %>"
+        <%=(disabled)?'disabled':'' %>
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-sm">
+      <label for="notes" class="form-label">Notes</label>
+      <textarea class="form-control form-control-sm" id="notes" name="notes" rows="2" <%=(disabled)?'disabled':'' %>
+    ><%=opdBill.notes  %></textarea>
+    </div>
+  </div>
+</form>

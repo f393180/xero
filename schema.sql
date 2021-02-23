@@ -18,7 +18,8 @@ create table opd_bill(
     dressing_charge integer NOT NULL DEFAULT 0,
     other_charge integer NOT NULL DEFAULT 0,
     bill_status varchar(10) NOT NULL DEFAULT 'DRAFT',
-    bill_date varchar(11),
+    bill_date date,
+    notes varchar,
     created_on timestamp without time zone NOT NULL,
     created_by varchar(15) NOT NULL,
     updated_on timestamp without time zone NOT NULL,
@@ -37,7 +38,8 @@ create table opd_bill_history(
     dressing_charge integer NOT NULL DEFAULT 0,
     other_charge integer NOT NULL DEFAULT 0,
     bill_status varchar(10) NOT NULL DEFAULT 'DRAFT',
-    bill_date varchar(11),
+    bill_date date,
+    notes varchar,
     updated_on timestamp without time zone NOT NULL,
     updated_by varchar(15) NOT NULL
 );

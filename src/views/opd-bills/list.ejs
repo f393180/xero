@@ -71,14 +71,18 @@
                   </a>
                 </td>
                 <td class="text-center">
-                  <span class="badge badge-success">
+                  <span class="badge  <%=(list[i].bill_status === 'COMPLETE' ? 'badge-success': 'badge-warning' )  %>">
                     <%= list[i].bill_status %>
                   </span>
                 </td>
                 <td class="text-center">
                   <a href="/opd-bills/view/<%= list[i].opd_bill_id %>" class="text-info">View</a>&nbsp;
                   <a href="/opd-bills/edit/<%= list[i].opd_bill_id %>" class="text-warning">Edit</a>&nbsp;
-                  <a href="/opd-bills/print/<%= list[i].opd_bill_id %>" class="text-info">Print</a>
+                  <% if(list[i].bill_status === 'COMPLETE'){%>
+                    <a href="/opd-bills/print/<%= list[i].opd_bill_id %>" class="text-info">Print</a>
+                  <%}else{%>
+                    <span class="text-muted">Print</span>
+                  <%}%>
                 </td>
               </tr>
               <% } %>

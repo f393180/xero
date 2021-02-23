@@ -15,6 +15,7 @@ const getOpdBillById = async (req, res, needHistory = false) => {
   const { opdBill, historyData } = await opdBillService.getOpdBillById(opdBillId, needHistory);
   res.render('opd-bills/view', {
     page_name: pageName,
+    disabled: true,
     opdBill,
     historyData,
   });

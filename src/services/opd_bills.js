@@ -16,10 +16,11 @@ const getOpdBills = async (page = 1) => {
     + 'other_charge, '
     + '(consulting_charge + medication_charge + dressing_charge + other_charge) as total_charge, '
     + 'bill_status, '
-    + 'bill_date '
+    + 'to_char(bill_date, \'YYYY-Mon-DD\') as bill_date '
     + 'FROM opd_bill  OFFSET $1 LIMIT $2',
     [offset, config.listPerPage],
   );
+  console.log(rows);
   return rows;
 };
 
@@ -41,6 +42,7 @@ const getOpdBillById = async (id = 1, needHistory = false) => {
     );
     result = { ...result, historyData: historyDataRows };
   }
+  console.log(result);
 
   return result;
 };
