@@ -16,6 +16,33 @@
         </div>
       </div>
       <%- include('form'); %>
+      <div class='row mt-3'>
+        <div class="col">
+          <table class="table table-sm table-hover table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th class="bg-secondary text-center" scope="col" colspan="3">
+                  OPD Bill History <span class="font-weight-normal">(Currently Live Version: #1)</span>
+                </th>
+              </tr>
+              <tr>
+                <th class="bg-secondary" scope="col">Version</th>
+                <th class="bg-secondary" scope="col">Timestamp</th>
+                <th class="bg-secondary" scope="col">User</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i=0; i < historyData.length; i++){ %>
+              <tr>
+                <td><%=(i+1)%></td>
+                <td><%=historyData[i].updated_on.toLocaleString('en-IN',{year: 'numeric', month: 'short', day: '2-digit', hour12: false}) %></td>
+                <td><%=historyData[i].updated_by%></td>
+              </tr>
+              <%}%>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <%- include('../common/scripts'); %>
   </body>

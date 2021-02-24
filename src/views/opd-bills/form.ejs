@@ -3,7 +3,7 @@
     <div class="form-group col-sm-3">
       <label for="bill-date" class="form-label">Date</label>
       <input type="text" class="form-control form-control-sm" id="bill-date" name="bill-date"
-        value="<%= new Date(opdBill.bill_date.toISOString()).toLocaleDateString('en-IN',{year: 'numeric', month: 'short', day: '2-digit'})  %>"
+        value="<%=opdBill.bill_date %>"
         <%=(disabled)?'disabled':'' %>
       />
     </div>

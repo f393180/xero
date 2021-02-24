@@ -17,3 +17,7 @@ body{
 .form-label{
     margin-bottom: 1px;
 }
+.extra-grid{
+    width: 100%;
+    overflow-x: scroll;
+}
