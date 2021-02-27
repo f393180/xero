@@ -12,7 +12,10 @@
         </div>
         <div class="col">
           <a class="btn btn-outline-warning btn-sm float-right" href="/opd-bills/" role="button">Edit</a>
-          <a class="btn btn-outline-success btn-sm float-right mr-2" href="/opd-bills/" role="button">Print</a>
+          <% if(opdBill.bill_status === 'COMPLETE'){%>
+            <a class="btn btn-outline-success btn-sm float-right mr-2" href="/opd-bills/" role="button">Print</a>          
+          <%}%>
+          <a class="btn btn-outline-primary btn-sm float-right mr-2" href="javascript:history.back()" role="button">Back</a>
         </div>
       </div>
       <%- include('form'); %>
@@ -21,22 +24,26 @@
           <table class="table table-sm table-hover table-bordered">
             <thead class="thead-dark">
               <tr>
-                <th class="bg-secondary text-center" scope="col" colspan="3">
+                <th class="bg-secondary text-center" scope="col" colspan="4">
                   OPD Bill History <span class="font-weight-normal">(Currently Live Version: #1)</span>
                 </th>
               </tr>
               <tr>
-                <th class="bg-secondary" scope="col">Version</th>
-                <th class="bg-secondary" scope="col">Timestamp</th>
-                <th class="bg-secondary" scope="col">User</th>
+                <th class="bg-secondary text-center" scope="col">Version</th>
+                <th class="bg-secondary text-center" scope="col">Timestamp</th>
+                <th class="bg-secondary text-center" scope="col">User</th>
+                <th class="bg-secondary text-center" scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
               <% for(var i=0; i < historyData.length; i++){ %>
               <tr>
-                <td><%=(i+1)%></td>
-                <td><%=historyData[i].updated_on.toLocaleString('en-IN',{year: 'numeric', month: 'short', day: '2-digit', hour12: false}) %></td>
-                <td><%=historyData[i].updated_by%></td>
+                <td class="text-center"><%=(i+1)%></td>
+                <td class="text-center"><%=historyData[i].updated_on.toLocaleString('en-IN',{year: 'numeric', month: 'short', day: '2-digit', hour12: false}) %></td>
+                <td class="text-center"><%=historyData[i].updated_by%></td>
+                <td class="text-center">
+                  <a href="#" class="text-info" data-toggle="modal" data-target="#exampleModal" data-version-id="<%=i%>">View</a>
+                </td>
               </tr>
               <%}%>
             </tbody>
@@ -44,6 +51,105 @@
         </div>
       </div>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">OPD Bill</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="form-row">
+                <div class="form-group col-sm">
+                  <label for="modal-id" class="form-label">Id</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-id" disabled>
+                </div>
+                <div class="form-group col-sm">
+                  <label for="modal-version" class="form-label">Version</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-version" disabled>
+                </div>
+                <div class="form-group col-sm">
+                  <label for="modal-timestamp" class="form-label">Timestamp</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-timestamp" disabled>
+                </div>
+                <div class="form-group col-sm">
+                  <label for="modal-username" class="form-label">Username</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-username" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-sm-3">
+                  <label for="modal-date" class="form-label">Bill Date</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-date" disabled>
+                </div>
+                <div class="form-group col-sm-3">
+                  <label for="modal-status" class="form-label">Bill Status</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-status" disabled>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-sm">
+                  <label for="modal-consulting-charge" class="form-label">Consulting Charge</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-consulting-charge" disabled />
+                </div>
+                <div class="form-group col-sm">
+                  <label for="modal-medication-charge" class="form-label">Medication Charge</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-medication-charge" disabled />
+                </div>
+                <div class="form-group col-sm">
+                  <label for="modal-dressing-charge" class="form-label">Dressing Charge</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-dressing-charge" disabled />
+                </div>
+                <div class="form-group col-sm">
+                  <label for="modal-other-charge" class="form-label">Other Charge</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-other-charge" disabled />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-sm-3">
+                  <label for="modal-patient-first-name" class="form-label">Patient's First Name</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-patient-first-name" disabled />
+                </div>
+                <div class="form-group col-sm-3">
+                  <label for="modal-patient-last-name" class="form-label">Patient's Last Name</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-patient-last-name" disabled/>
+                </div>
+                <div class="form-group col-sm">
+                  <label for="modal-company-name" class="form-label">Company Name</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-company-name" disabled/>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-sm-8">
+                  <label for="modal-street-address" class="form-label">Street Address</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-street-address" disabled/>
+                </div>
+                <div class="form-group col-sm-4">
+                  <label for="modal-area" class="form-label">Area</label>
+                  <input type="text" class="form-control form-control-sm" id="modal-area" disabled/>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-sm">
+                  <label for="modal-notes" class="form-label">Notes</label>
+                  <textarea class="form-control form-control-sm" id="modal-notes" rows="2" disabled></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <%- include('../common/scripts'); %>
+    <script>
+      const historyData = <%- JSON.stringify(historyData)%>;
+    </script>
+    <script src="/js/view_opd_bill.js"></script>
   </body>
 </html>
