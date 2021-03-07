@@ -7,7 +7,8 @@ $(() => {
     const index = button.data('version-id');
     const modal = $(this);
     console.log(historyData[index]);
-    modal.find('#modal-id').val(historyData[index]['opd_bill_id']);
+    modal.find('#modal-id').text(historyData[index]['opd_bill_id']);
+    modal.find('#modal-bill-status').text(historyData[index]['bill_status']);
     modal.find('#modal-version').val(index);
     modal.find('#modal-timestamp').val(historyData[index]['updated_on']);
     modal.find('#modal-username').val(historyData[index]['updated_by']);
@@ -28,7 +29,7 @@ $(() => {
 
 
 const clearModalFields = () => {
-  $('#modal-id').val('');
+  $('#modal-id').text('');
   $('#modal-version').val('');
   $('#modal-timestamp').val('');
   $('#modal-username').val('');

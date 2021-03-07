@@ -14,7 +14,18 @@
             <a class="btn btn-outline-success btn-sm float-right" href="/opd-bills/" role="button">List Opd Bills</a>
         </div>
       </div>
+      <form class="data-form" id="opd-bill-form" method="POST" action="/opd-bills/create">
+        <%- include('form'); %>
+        <div class="row">
+          <div class="col-sm-12">
+            <button type="button" class="btn btn-success btn-sm" id="create-opd-save">Save</button>
+            <button type="button" class="btn btn-info btn-sm" id="create-opd-draft">Save as draft</button>
+            <button type="reset" class="btn btn-warning btn-sm">Reset</button>
+          </div>
+        </div>        
+      </form>      
     </div>
     <%- include('../common/scripts'); %>
+    <script src="/js/create_opd_bill.js"></script>
   </body>
 </html>

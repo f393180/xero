@@ -5,6 +5,7 @@
 		}
 	],
 	"settings": {
-		"editor.cursorStyle": "underline"
+		"editor.cursorStyle": "underline",
+		"editor.tabSize": 2
 	}
 }

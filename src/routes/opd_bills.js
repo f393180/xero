@@ -9,4 +9,6 @@ router.get('/view/:opdBillId', (req, res) => controller.getOpdBillById(req, res,
 
 router.get('/create', (req, res) => controller.getCreatePage(req, res));
 
+router.post('/create', (req, res) => controller.handleCreateRequest(req, res));
+
 module.exports = router;

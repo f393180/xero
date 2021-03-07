@@ -43,7 +43,7 @@ const getOpdBillById = async (id = 1, needHistory = false) => {
     + 'other_charge, '
     + 'bill_status, '
     + 'notes, '
-    + 'to_char(bill_date, \'YYYY-Mon-DD\') as bill_date '
+    + 'to_char(bill_date, \'YYYY-MM-DD\') as bill_date '
     + 'FROM opd_bill WHERE opd_bill_id = $1',
     [id],
   );
@@ -64,7 +64,7 @@ const getOpdBillById = async (id = 1, needHistory = false) => {
       + 'other_charge, '
       + 'bill_status, '
       + 'notes, '
-      + 'to_char(bill_date, \'YYYY-Mon-DD\') as bill_date, '
+      + 'to_char(bill_date, \'YYYY-MM-DD\') as bill_date, '
       + 'updated_on::text as updated_on, '
       + 'updated_by '
       + 'FROM opd_bill_history WHERE opd_bill_id = $1',
