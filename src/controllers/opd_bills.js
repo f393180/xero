@@ -42,9 +42,21 @@ const handleCreateRequest = (req, res) => {
   });
 };
 
+const getEditPage = async (req, res) => {
+  const { opdBillId } = req.params;
+  const { opdBill } = await opdBillService.getOpdBillById(opdBillId, false);
+  res.render('opd-bills/edit', {
+    page_name: pageName,
+    user: req.user,
+    disabled: false,
+    opdBill,
+  });
+};
+
 module.exports = {
   listOpdBills,
   getOpdBillById,
   getCreatePage,
   handleCreateRequest,
+  getEditPage,
 };

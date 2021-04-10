@@ -38,14 +38,12 @@ app.use('/js', express.static(path.join(__dirname, 'node_modules', 'jquery', 'di
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-app.use('/auth', authRoutes);
-app.use('/opd-bills', opdBillsRoutes);
-app.use('/users', usersRoutes);
 
 app.use((req, res, next) => {
   res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   next();
 });
+app.use('/auth', authRoutes);
 
 app.use((req, res, next) => {
   if (req.user) {
@@ -54,6 +52,9 @@ app.use((req, res, next) => {
     res.redirect('/auth/login');
   }
 });
+
+app.use('/opd-bills', opdBillsRoutes);
+app.use('/users', usersRoutes);
 
 app.get('/', (req, res) => {
   res.render('index', {

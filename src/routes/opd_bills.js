@@ -11,4 +11,6 @@ router.get('/create', (req, res) => controller.getCreatePage(req, res));
 
 router.post('/create', (req, res) => controller.handleCreateRequest(req, res));
 
+router.get('/edit/:opdBillId', (req, res) => controller.getEditPage(req, res));
+
 module.exports = router;

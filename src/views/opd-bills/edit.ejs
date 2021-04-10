@@ -10,8 +10,22 @@
         <div class="col">
             <span class="h4 text-success page-title">Edit Opd Bill</span>
         </div>
+        <div class="col">
+          <a class="btn btn-outline-primary btn-sm float-right mr-2" href="javascript:history.back()" role="button">Back</a>
+        </div>
       </div>
+      <form class="data-form" id="opd-bill-form" method="POST" action="/opd-bills/edit">
+        <%- include('form'); %>
+        <div class="row">
+          <div class="col-sm-12">
+            <button type="button" class="btn btn-success btn-sm" id="create-opd-save">Save</button>
+            <button type="button" class="btn btn-info btn-sm" id="create-opd-draft">Save as draft</button>
+            <button type="reset" class="btn btn-warning btn-sm">Reset</button>
+          </div>
+        </div>        
+      </form>      
     </div>
     <%- include('../common/scripts'); %>
+    <script src="/js/create_opd_bill.js"></script>
   </body>
 </html>

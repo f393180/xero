@@ -5,6 +5,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.render('users/list', {
     page_name: 'Users',
+    user: req.user,
   });
 });
 

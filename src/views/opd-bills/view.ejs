@@ -15,7 +15,7 @@
           </h4>
         </div>
         <div class="col">
-          <a class="btn btn-outline-warning btn-sm float-right" href="/opd-bills/" role="button">Edit</a>
+          <a class="btn btn-outline-warning btn-sm float-right" href="/opd-bills/edit/<%=opdBill.opd_bill_id  %>" role="button">Edit</a>
           <% if(opdBill.bill_status === 'COMPLETE'){%>
             <a class="btn btn-outline-success btn-sm float-right mr-2" href="/opd-bills/" role="button">Print</a>
           <%}%>
